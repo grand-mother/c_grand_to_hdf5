@@ -2,7 +2,7 @@
  *  \brief library routines to read the GRAND binary file
  *
  *
- *  Date: 4/12/2020
+ *  Date: 14/12/2020
  *
  *  Author: C. Timmermans
  */
@@ -70,7 +70,7 @@ unsigned short *grand_read_event(FILE *fp, int *size)
     return(NULL);
   }
   if(event != NULL) {
-    if(event[0] != isize) {
+    if(event[0] != (isize&0xffff) || event[1] != (isize>>16)) {
       free((void *)event);
       event = (unsigned short *)malloc(isize+INTSIZE);
     }

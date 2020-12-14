@@ -159,10 +159,10 @@ typedef struct{
   char coinc_readout[2];
   char ctrl_spare[4];
   char prepost[16];
+  ChannelProperties property[4];
+  ChannelTrigger chtrigger[4];
+  char filter_constants[8][16];
 }ElectronicsHeader;
-//  ChannelProperties property[4];
-//  ChannelTrigger chtrigger[4];
-//  char filtsetting[8][16];
 
 
 

@@ -2,7 +2,7 @@
  *  \brief structures and routines  used in GRAND HDF5 file format
  *
  *
- *  Date: 6/12/2020
+ *  Date: 14/12/2020
  *
  *  Author: C. Timmermans
  */
@@ -30,6 +30,7 @@ typedef struct{
   char ant_model[20];
   short elec_id;
   char elec_model[20];
+  char channel[4];
   ElectronicsHeader elec_setting;
 }AntInfo;
 
@@ -66,9 +67,10 @@ typedef struct{
 
 int grand_HDF5create_file(char *hdfname,int runnr,hid_t *file_id, hid_t *run_id);
 void grand_HDF5close_file(hid_t run_id,hid_t file_id);
-void grand_HDF5initiate_field();
+int grand_HDF5initiate_field(char *fieldname);
 void grand_HDF5fill_electronicsheader(int iant,char *Elechdr);
-void grand_HDF5fill_event(hid_t run_id,unsigned short *event);
+int grand_HDF5fill_event(hid_t run_id,unsigned short *event);
+int grand_HDF5fill_periodic_event(hid_t run_id,unsigned short *event);
 int grand_HDF5fill_run(char *filename, hid_t run_id);
 int grand_HDF5create_run_structure(hid_t run_id);
 void grand_HDF5fill_runheader(hid_t run_id);

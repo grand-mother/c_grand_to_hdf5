@@ -11,5 +11,5 @@ libgrandlib.a: grand_hdf5lib.o grand_misc.o grand_binlib.o
 to_hdf5: to_hdf5.o libgrandlib.a
 	$(CC) -o $@ $(CFLAGS) $(LFLAGS) -L. -lgrandlib $(LIBS) $<
 
-%.o: %.c %.h Makefile 
+%.o: %.c %.h grand_hdf5.h Makefile 
 	${CC} $(CFLAGS) -c $<
