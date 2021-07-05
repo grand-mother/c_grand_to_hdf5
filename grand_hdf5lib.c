@@ -369,6 +369,7 @@ int grand_HDF5create_chunked_property()
   if((p_chunked = H5Pcreate(H5P_DATASET_CREATE))<0) return(-1);
   if(H5Pset_layout(p_chunked, H5D_CHUNKED)<0) return_code = -2;
   if(H5Pset_chunk(p_chunked, rank, chunk_dims)<0)return_code = -2;
+  if(H5Pset_deflate(p_chunked,6)<0) return_code = -2; //compression level 6
   if(return_code<0) {
     H5Pclose(p_chunked);
     p_chunked = -1;
